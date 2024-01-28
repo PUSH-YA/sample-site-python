@@ -4,7 +4,11 @@
 
 
 <h1>{{project.title}}e</h1>
-<br>
+<hr>
+{% for tag in tags %}
+<span class = "tags">{{tag}}</span>
+{% endfor %}
+<hr>
 <p>{{project.description}}</p>
 
 {% endblock content %}
