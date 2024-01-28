@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painting with Mouse Clicks</title>
+    <style>
+        canvas {
+            border: 3px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="paintCanvas" width="800" height="800"></canvas>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the canvas element and its 2d context
+        var canvas = document.getElementById("paintCanvas");
+        var ctx = canvas.getContext("2d");
+
+        var painting = false;
+
+        // Event listeners for mouse events
+        canvas.addEventListener("mousedown", startPosition);
+        canvas.addEventListener("mouseup", endPosition);
+        canvas.addEventListener("mousemove", draw);
+
+        function startPosition(e) {
+            painting = true;
+            draw(e);
+        }
+
+        function endPosition() {
+            painting = false;
+            ctx.beginPath();
+        }
+
+        function draw(e) {
+            if (!painting) return;
+
+            ctx.lineWidth = 5;
+            ctx.lineCap = "round";
+            ctx.strokeStyle = "#000";
+
+            // Set the drawing position based on the mouse coordinates
+            ctx.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+        }
+    });
+</script>
+
+</body>
+</html>
