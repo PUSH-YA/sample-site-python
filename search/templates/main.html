@@ -3,26 +3,77 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>SampleSearch</title>
+    <title>Searchform</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <!-- <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script> -->
 </head>
 <body style="background-color: #1c1c1d; color: #fff; font-family: Cambria; font-size: larger;">
     <style>
+        :root {
+            --tag_pad: 5px;
+        }
+
         hr{background-color: #f0b9a5; height: 2px; border:0}
         a:link {color:#48cbf2}
         a:visited {color:#48cbf2}
         a:hover {color:#f0b9a5}
 
+        /* Logo Link */
+        .logo-href {
+            text-decoration: none;
+            color: #f0b9a5; 
+        }
+
+        .logo-href:visited {
+            text-decoration: none;
+            color: #f0b9a5; 
+        }
+
+        .logo-href:hover {
+            color: #48cbf2; 
+        }
+
         .tags {
-            margin: auto;
-            padding: 5px;
+            margin: var(--tag_pad);
+            padding: var(--tag_pad);
             background: #48caf274;
-            border-radius: 5px
+            border-radius: var(--tag_pad);
             }
 
             table { border-spacing: 10px; }
+
+            .button-style {
+                background-color: #f0b9a5;
+                color: grey;
+                font-family: Cambria;
+                font-size: large;
+                border-radius:10px;
+            }
+
+            .button-style:hover {
+                background-color: grey;
+                color: white;
+                font-family: Cambria;
+                font-size: large;
+                border-radius:10px;
+            }
+
+            input[type="submit"] {
+                background-color: #f0b9a5;
+                color: grey;
+                font-family: Cambria;
+                font-size: large;
+                border-radius:10px;
+            }
+
+            input[type="submit"]:hover {
+                background-color:grey;
+                color: white;
+                font-family: Cambria;
+                font-size: large;
+                border-radius:10px;
+            }
     </style>
     <hr>
 
