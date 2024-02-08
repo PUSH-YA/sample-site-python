@@ -7,7 +7,8 @@ import uuid
 class Project(models.Model):
     title = models.CharField(max_length=200)
     # null init for db, blank init for django val.
-    description = models.TextField(null=True, blank = True) 
+    description = models.TextField(null=True, blank = True)
+    feature_image = models.ImageField(null = True, blank = True, default = "default.jpg")
     demo_link = models.CharField(max_length=2000, blank = True)
     source_link = models.CharField(max_length=2000, null=True, blank = True)
     tags = models.ManyToManyField('Tag', blank = True)

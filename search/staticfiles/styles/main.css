@@ -1,0 +1,96 @@
+
+/* ////////////////////// MAIN CUSTOMISATIONS ////////////////////// */
+:root {
+    --tag_pad: 5px;
+}
+
+body{
+    background-color: #1c1c1d;
+    color: #fff;
+    font-family: Cambria;
+    font-size: larger;
+}
+
+pp{
+    color: #48cbf2
+}
+
+hr{background-color: #f0b9a5; height: 2px; border:0}
+a:link {color:#48cbf2}
+a:visited {color:#48cbf2}
+a:hover {color:#f0b9a5}
+
+/* ////////////////////// CUSTOM LOGO STUFF ////////////////////// */
+
+.logo-href {
+    text-decoration: none;
+    color: #f0b9a5; 
+}
+
+.logo-href:visited {
+    text-decoration: none;
+    color: #f0b9a5; 
+}
+
+.logo-href:hover {
+    color: #48cbf2; 
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    max-width: 50px; 
+    margin-right: 10px; 
+    border-radius: 50px;
+}
+
+/* ////////////////////// CUSTOM TAGS ////////////////////// */
+.tags {
+    margin: var(--tag_pad);
+    padding: var(--tag_pad);
+    background: #48caf274;
+    border-radius: var(--tag_pad);
+}
+
+
+/* ////////////////////// CUSTOM TABLE ////////////////////// */
+table { border-spacing: 10px; }
+
+
+
+
+/* ////////////////////// CUSTOM BUTTONS ////////////////////// */
+.button-style {
+    background-color: #f0b9a5;
+    color: grey;
+    font-family: Cambria;
+    font-size: large;
+    border-radius:10px;
+}
+
+.button-style:hover {
+    background-color: grey;
+    color: white;
+    font-family: Cambria;
+    font-size: large;
+    border-radius:10px;
+}
+
+input[type="submit"] {
+    background-color: #f0b9a5;
+    color: grey;
+    font-family: Cambria;
+    font-size: large;
+    border-radius:10px;
+}
+
+input[type="submit"]:hover {
+    background-color:grey;
+    color: white;
+    font-family: Cambria;
+    font-size: large;
+    border-radius:10px;
+}

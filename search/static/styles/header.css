@@ -1,0 +1,22 @@
+/* Your existing styles */
+
+.header {
+  overflow: hidden;
+  padding: var(--tag_pad);
+}
+
+.header a {
+  float: left;
+  display: block;
+  color: #f0b9a5;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: #1c1c1d;
+  border-radius: var(--tag_pad);
+}
+

@@ -1,4 +1,27 @@
-<h1> <a href = "{% url 'projects' %}" class="logo-href">Logo</a></h1>
+{% load static %}
 
-<a href = "{% url 'create-project' %}">Add Project</a>
+<h1 style="text-align: left;">
+    <a href = "{% url 'projects' %}" class="logo-href"> 
+        <img src = '{% static "images/logo.svg" %}' class = "logo-img">
+        Push-ya Project Search
+    </a>
+</h1>
+
+<div class = "header">
+    <a href="{% url 'create-project' %}" class="link-spacing">Add Project</a>
+    <a href="" class="link-spacing">Developers</a>
+    <a href="" class="link-spacing">Projects</a>
+    <a href="" class="link-spacing">Projects</a>
+    <a href="" class="link-spacing">My Account</a>
+</div>
 <hr> 
+
+<!-- Header Section -->
+
+    <!-- <li class="header-menu"><a href="">Developers</a></li>
+    <li class="header-menu"><a href="">Developers</a></li>
+    <li class="header-menu"><a href="">Projects</a></li>
+    <li class="header-menu"><a href="">Projects</a></li>
+    <li class="header-menu"><a href="">My Account</a></li>
+    <li class="header-menu"><a href="{% url 'create-project' %}" class="btn btn--sub">Add Project</a></li>
+    <li class="header-menu"><a href="" class="btn btn--sub">Login/Sign Up</a></li> -->
