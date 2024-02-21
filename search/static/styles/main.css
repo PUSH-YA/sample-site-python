@@ -29,12 +29,12 @@ a:hover {color:#f0b9a5}
 }
 
 .logo-href:visited {
-    text-decoration: none;
     color: #f0b9a5; 
 }
 
 .logo-href:hover {
-    color: #48cbf2; 
+    color: #48cbf2;
+    text-decoration: underline; 
 }
 
 .logo-container {
@@ -65,32 +65,26 @@ table { border-spacing: 10px; }
 /* ////////////////////// CUSTOM BUTTONS ////////////////////// */
 .button-style {
     background-color: #f0b9a5;
-    color: grey;
-    font-family: Cambria;
-    font-size: large;
-    border-radius:10px;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .button-style:hover {
-    background-color: grey;
-    color: white;
-    font-family: Cambria;
-    font-size: large;
-    border-radius:10px;
+    background-color: #c77d63;
 }
 
 input[type="submit"] {
     background-color: #f0b9a5;
-    color: grey;
-    font-family: Cambria;
-    font-size: large;
-    border-radius:10px;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    background-color:grey;
-    color: white;
-    font-family: Cambria;
-    font-size: large;
-    border-radius:10px;
+    background-color: #c77d63;
 }

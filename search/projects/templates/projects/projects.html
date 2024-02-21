@@ -4,27 +4,25 @@
 
 <h1>Projects Template</h1>
 
-<table>
-    <tr>
-        <th>Project</th>
-        <th>Positive votes</th>
-        <th>Votes</th>
-        <th>Created</th>
-        <th></th>
-        <th></th>
-    </tr>
-    {% for project in projects %}
-        <tr>
-            <td>{{project.title}}</td>
-            <td>{{project.vote_ratio}}%</td>
-            <td>{{project.vote_total}}</td>
-            <td>{{project.created}}</td>
-            <td><a href = "{% url 'update-project' project.id %}">Edit</a></td>
-            <td><a href = "{% url 'delete-project' project.id %}">Delete</a></td>
-            <td><a href = "{% url 'project' project.id %}">View</a></td>
-        </tr>
-    {% endfor %}
-</table>
+{% for project in projects %}
+
+    <div class="project-card">
+        <div class ="card-link">
+            <a href="{% url 'project' project.id %}">
+                <center><img src= "{{ project.feature_image.url }}" class="project-image"></center>
+                <h3> {{ project.title }}</h3>
+            </a>
+        </div>
+        <p>Votes: {{ project.vote_ratio }}% ({{ project.vote_total }} Vote{{ project.vote_total|pluralize:"s" }})</p>
+        <p>Created: {{ project.created }}</p>
+        <div class="card-buttons">
+            <a href="{% url 'update-project' project.id %}">Edit</a>
+            <a href="{% url 'delete-project' project.id %}">Delete</a>
+            
+        </div>
+    </div>
+{% endfor %}
+
 
 
 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>

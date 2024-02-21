@@ -11,5 +11,14 @@
 {% endfor %}
 <hr>
 <p>{{project.description}}</p>
-
+<p>
+    {% if project.source_link %}
+        <a href="{{ project.source_link }}">Source link</a>
+    {% endif %}
+    <span class = "link-space"></span>
+    {% if project.demo_link %}
+        <a href="{{ project.demo_link }}">Demo link</a>
+    {% endif %}
+</p>
+<p>Created: {{project.created}}</p>
 {% endblock content %}
