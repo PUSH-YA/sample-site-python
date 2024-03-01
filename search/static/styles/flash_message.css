@@ -1,0 +1,72 @@
+
+  /* CSS for Flash Message tags */
+  .message-error {
+    background-color: darkred;
+    color: lightpink;
+    border-color: #f0b9a5;
+    padding: 10px;
+    border-radius: 5px;
+    justify-content: space-around;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  
+  .message-info {
+    background-color: darkcyan;
+    color: lightskyblue;
+    border-color: #f0b9a5;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: space-around;
+    display: inline-block;
+    margin-top: 5px;
+  }
+  
+  .message-debug {
+    background-color: slategray;
+    color: lightgrey;
+    border-color: f0b9a5;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: space-around;
+    display: inline-block;
+    margin-top: 5px;
+  }
+
+  .message-success {
+    background-color: darkgreen;
+    color: lightgreen;
+    border-color: #f0b9a5;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: space-around;
+    display: inline-block;
+    margin-top: 5px;
+  }
+
+  .message-warning {
+    background-color: orangered;
+    border-color: gold;
+    padding: 5px;
+    border-radius: 5px;
+    justify-content: space-around;
+    display: inline-block;
+    margin-top: 5px;
+  }
+
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: transparent;
+    border-color: transparent;
+  }
+  
+  .closebtn:hover {
+    color: black;
+  }

@@ -5,20 +5,20 @@
 <h1>Projects Template</h1>
 
 {% for project in projects %}
-
     <div class="project-card">
-        <div class ="card-link">
-            <a href="{% url 'project' project.id %}">
-                <center><img src= "{{ project.feature_image.url }}" class="project-image"></center>
-                <h3> {{ project.title }}</h3>
-            </a>
-        </div>
+        <div class ="project-card-link"><a href="{% url 'project' project.id %}">
+            <center><img src= "{{ project.feature_image.url }}" class="project-image"></center>
+            <h3> {{ project.title }}</h3>
+        </a></div>
+        <h5> By: 
+            <a href = "{% url 'user-profile' project.owner.id %}" style = "text-decoration: wavy;">
+                <i>{{ project.owner }}</i>
+            </a></h5>
         <p>Votes: {{ project.vote_ratio }}% ({{ project.vote_total }} Vote{{ project.vote_total|pluralize:"s" }})</p>
         <p>Created: {{ project.created }}</p>
         <div class="card-buttons">
             <a href="{% url 'update-project' project.id %}">Edit</a>
-            <a href="{% url 'delete-project' project.id %}">Delete</a>
-            
+            <a href="{% url 'delete-project' project.id %}">Delete</a>    
         </div>
     </div>
 {% endfor %}

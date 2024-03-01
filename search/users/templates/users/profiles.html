@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<center><h1 style = "color: #f4f0e8;"> Meet the Talents!</h1></center>
+
+{% for profile in profiles %}
+
+<div class="profile-card">
+        <div class = "profile-card-link"> <a href ="{% url 'user-profile' profile.id %}">
+                <img src= "{{ profile.profile_image.url }}" class="profile-image">
+                <div class = "profile-info" >
+                        <h2>{{ profile.name }}</h2>
+                        <h4>{{ profile.short_intro }}</h4>
+                </div>
+        </a></div>
+        <p style = "display: flex; flex-wrap:wrap">          
+                <!-- query the child relationship with the parent.child_set.all -->
+                {% for skill in profile.skill_set.all|slice:"5" %}
+                <span class = "tags"> {{ skill }}</span>
+                {% endfor %}
+        </p>
+        <p>{{ profile.bio|slice:"150" }}</p>
+        <p>
+                <div>
+                        <a href = "mailto:{{profile.email}}" style = "text-decoration: none;"> 
+                            <img src = '{% static "images/email-dark.png" %}' width = 46 style = "border-radius: 5px">
+                        </a>
+                        <span style = "margin-right: 15px"></span>
+                        {% if profile.social_linkedin %}
+                                <a href="{{ profile.social_linkedin }}" style = "text-decoration: none;">
+                                    <img src = '{% static "images/Linkedin.png" %}' width = 52>
+                                </a>
+                                <span style = "margin-right: 15px"></span>
+                        {% endif %}
+                        {% if profile.social_github %}
+                                <a href="{{ profile.social_github }}" style = "text-decoration: none;">
+                                    <img src = '{% static "images/github-dark.png" %}' width = 52>
+                                </a>
+                                <span style = "margin-right: 15px"></span>
+                        {% endif %}
+                        {% if profile.social_website %}
+                                <a href="{{ profile.social_website }}" style = "text-decoration: none;">
+                                    <img src = '{% static "images/website.png" %}' width = 48>
+                                </a>
+                                <span style = "margin-right: 15px"></span>
+                        {% endif %}
+                    </div>
+        </p>
+</div>
+
+{% endfor %}
+
+{% endblock content %}

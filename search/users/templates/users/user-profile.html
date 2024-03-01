@@ -1,0 +1,109 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div style = "display: inline-flex;">
+    <left>
+        <img src= "{{ profile.profile_image.url }}" width = "300" height = "300" style = "border-radius: 150px;">
+    </left>
+    <div style = "margin-left: 20px;">
+        <!-- intro  -->
+        <h1>{{profile.name}}</h1>
+        <i><p>{{profile.short_intro}}</p></i>
+        <!-- location  -->
+        <p><div style = "display: inline-flex;">
+            {{profile.location}} <img src = '{% static "images/location-pin.png" %}' width = 25>
+        </div></p>
+        <!-- link -->
+        <div>
+            <a href = "mailto:{{profile.email}}" style = "text-decoration: none;"> 
+                <img src = '{% static "images/email.png" %}' width = 48 style = "border-radius: 5px">
+            </a>
+            <span style = "margin-right: 15px"></span>
+            {% if profile.social_linkedin %}
+                    <a href="{{ profile.social_linkedin }}" style = "text-decoration: none;">
+                        <img src = '{% static "images/Linkedin.png" %}' width = 52>
+                    </a>
+                    <span style = "margin-right: 15px"></span>
+            {% endif %}
+            {% if profile.social_github %}
+                    <a href="{{ profile.social_github }}" style = "text-decoration: none;">
+                        <img src = '{% static "images/github-mark-white.png" %}' width = 48>
+                    </a>
+                    <span style = "margin-right: 15px"></span>
+            {% endif %}
+            {% if profile.social_website %}
+                    <a href="{{ profile.social_website }}" style = "text-decoration: none;">
+                        <img src = '{% static "images/website.png" %}' width = 48>
+                    </a>
+                    <span style = "margin-right: 15px"></span>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<h2>About me</h2>
+<p>{{profile.bio}}</p>
+
+<h2>Skills</h2>
+<!-- <style>
+    .profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-table th,
+    .profile-table td {
+        padding: 15px;
+        text-align: left;
+        border: 1px dashed #ddd;
+    }
+
+    .profile-table tr:hover {
+        background-color: #30303a;
+    }
+</style> -->
+<center>
+<table class = "profile-table">
+    {% for skill in topSkills.all %}
+    <tr>
+        <td><b>{{skill.name}}</b></td>
+        <td>{{skill.description}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</center>
+
+{% if otherSkills %}
+<h2>Other Skills</h2>
+    {% for skill in otherSkills.all %}
+        <span class = "tags">{{ skill.name }}</span>
+    {% endfor %}
+{% endif %}
+
+<h2> Projects </h2>
+{% for project in profile.project_set.all%}
+<div class="project-card">
+    <div class ="project-card-link"><a href="{% url 'project' project.id %}">
+        <center><img src= "{{ project.feature_image.url }}" class="project-image"></center>
+        <h3> {{ project.title }}</h3>
+    </a></div>
+    <h5> By: 
+        <a href = "{% url 'user-profile' project.owner.id %}" style = "text-decoration: wavy;">
+            <i>{{ project.owner }}</i>
+        </a></h5>
+    <p>Votes: {{ project.vote_ratio }}% ({{ project.vote_total }} Vote{{ project.vote_total|pluralize:"s" }})</p>
+    <p>Created: {{ project.created }}</p>
+    <div class="card-buttons">
+        <a href="{% url 'update-project' project.id %}">Edit</a>
+        <a href="{% url 'delete-project' project.id %}">Delete</a>    
+    </div>
+</div>
+{% endfor %}
+
+<h1></h1>
+{% endblock content %}

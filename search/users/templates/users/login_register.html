@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Projects repo</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' 
+    media='screen' href='{% static "styles/main.css" %}'>
+    <link rel='stylesheet' type='text/css'
+    media='screen' href='{% static "styles/form.css" %}'>
+    <link rel='stylesheet' type='text/css' 
+    media='screen' href='{% static "styles/alert.css" %}'>
+    <link rel='stylesheet' type='text/css' 
+    media='screen' href='{% static "styles/flash_message.css" %}'>
+    <!-- <script src='main.js'></script> -->
+</head>
+
+<body class="login-body"></body>
+<div class = "bcg-image"> 
+
+{% if page == 'register' %}
+<div class="wrapper">
+        <h2>Register User</h2>
+
+        <br>
+        <center>
+                {% if messages %}
+                {% for message in messages %}
+                <div class = "message-{{message.tags}}">
+                        {{message}}
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                </div>
+                <br>
+                {% endfor %}
+                {% endif %}
+        </center>
+
+
+        <form method="POST" action="{% url 'register' %}" class="login-form">
+            {% csrf_token %}
+            
+            {% for field in form %}
+                <div class="input-box">
+                        <!-- <input type="text" name = "{{field.name}}" placeholder="{{field.label}}" required> -->
+                        <label for = "forInput#text" style = "color:#1c1c1d">{{field.label}}</label>
+                        {{field}}
+                </div>
+                {% if field.help_text %}
+                <div class = "text">
+                        <small style="color:lightslategrey;">{{field.help_text}}</small>
+                </div>
+                {% endif %}
+
+                {% for error in field.errors %}
+                        <small style="color:darkred;">{{error}}</small>
+                {% endfor %}
+
+            {% endfor %}
+
+            <div class="input-box button">
+                <input type="submit" value="Register User" />
+            </div>
+        </form>
+        <br>
+        <div class = "text">
+                <p style = "color: #1c1c1d;">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+        </div>
+
+        <br>
+        <hr>
+        <br>
+        <center>
+                <div style = "display: inline-flex;">
+                <p style = "color: #1c1c1d;">
+                        Contact me via <span style = "margin-right: 10px"></span>
+                </p>
+                <a href = "https://www.linkedin.com/in/pushya-jain-4546a6150/">
+                <img src = '{% static "images/LI_logo.png" %}' height = 25></a> 
+                </div>
+        </center>
+        
+    </div>
+
+
+{% else %}
+
+    <div class="wrapper">
+        <h2>Login</h2>
+        
+        <br>
+        {% if messages %}
+        {% for message in messages %}
+        <div class = "message-{{message.tags}}">
+            {{message}}
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <form action = "{% url 'login' %}" method = "POST" class = "login-form">
+                {% csrf_token %}
+          <div class="input-box">
+            <input type="text" name = "username" placeholder="Enter your username" required>
+          </div>
+          <div class="input-box">
+            <input type="password" name = "password" placeholder="Enter password" required>
+          </div>
+          <div class="input-box button">
+            <input type="Submit" value="Login">
+          </div>
+          <div class="text">
+            <p style = "color: #1c1c1d;">Don't have an account? <a href="{% url 'register' %}">Sign up</a></p>
+          </div>
+        </form>
+
+
+<br>
+<hr>
+<br>
+<center>
+        <div style = "display: inline-flex;">
+        <p style = "color: #1c1c1d;">
+                Contact me via <span style = "margin-right: 10px"></span>
+        </p>
+            <a href = "https://www.linkedin.com/in/pushya-jain-4546a6150/">
+            <img src = '{% static "images/LI_logo.png" %}' height = 25></a> 
+        </div>
+</center>
+</div>
+
+{% endif %}
+
+</div>  
+</body>
+</html>

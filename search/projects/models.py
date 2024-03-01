@@ -1,10 +1,13 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinLengthValidator
 import uuid
+from users.models import Profile
 
 # Create your models here.
 
 class Project(models.Model):
+    owner = models.ForeignKey(Profile, null = True, blank = True, 
+                              on_delete = models.SET_NULL) # might wanna keep the projects
     title = models.CharField(max_length=200)
     # null init for db, blank init for django val.
     description = models.TextField(null=True, blank = True)

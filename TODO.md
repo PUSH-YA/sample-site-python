@@ -1,9 +1,9 @@
 - [x] learn django basics
 - [x] build database
 - [x] CRUD
-- [ ] static files and themes installation
-- [ ] add more apps
-- [ ] Authentication
+- [x] static files and themes installation
+- [x] add more apps
+- [x] Authentication
 - [ ] User actions
 - [ ] Search and Pagination
 - [ ] Reviews and messages

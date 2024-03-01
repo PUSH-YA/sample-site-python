@@ -5,7 +5,7 @@
 
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Push-ya Seach Site</title>
+    <title>Projects repo</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' 
     media='screen' href='{% static "styles/main.css" %}'>
@@ -15,18 +15,48 @@
     media='screen' href='{% static "styles/projects.css" %}'>
     <link rel='stylesheet' type='text/css' 
     media='screen' href='{% static "styles/form.css" %}'>
+    <link rel='stylesheet' type='text/css' 
+    media='screen' href='{% static "styles/profiles.css" %}'>
+    <link rel='stylesheet' type='text/css' 
+    media='screen' href='{% static "styles/flash_message.css" %}'>
     <!-- <script src='main.js'></script> -->
 </head>
 <body>
     <hr>
 
     {% include 'navbar.html' %}
+
+    <br>
+    <center>
+        {% if messages %}
+        {% for message in messages %}
+        <div class = "message-{{message.tags}}">
+            {{message}}
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        </div>
+        <br>
+        {% endfor %}
+        {% endif %}
+    </center>
     
+
+    <br>
     {% block content %}
     
     {% endblock content %}
-
+    <br>
+    <br>
     <hr>
-    <pp>Contact me via <a href = "https://www.linkedin.com/in/pushya-jain-4546a6150/">linkedin</a> </pp>
+    <br>
+    <center>
+        <div style = "display: inline-flex;">
+                Contact me via <span style = "margin-right: 10px"></span>
+            <a href = "https://www.linkedin.com/in/pushya-jain-4546a6150/">
+            <img src = '{% static "images/LI_logo.png" %}' height = 25></a> 
+        </div>
+    </center>
+    
+    
+    
 </body>
 </html>

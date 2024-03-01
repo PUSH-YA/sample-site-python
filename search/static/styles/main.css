@@ -6,14 +6,14 @@
 }
 
 body{
+    /* background-image: url('path/to/your/background-image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    position: relative; */
     background-color: #1c1c1d;
     color: #fff;
     font-family: Cambria;
     font-size: larger;
-}
-
-pp{
-    color: #48cbf2
 }
 
 hr{background-color: #f0b9a5; height: 2px; border:0}
@@ -54,18 +54,15 @@ a:hover {color:#f0b9a5}
     padding: var(--tag_pad);
     background: #48caf274;
     border-radius: var(--tag_pad);
+    display: inline-block;
 }
-
-
-/* ////////////////////// CUSTOM TABLE ////////////////////// */
-table { border-spacing: 10px; }
 
 
 
 /* ////////////////////// CUSTOM BUTTONS ////////////////////// */
 .button-style {
     background-color: #f0b9a5;
-    color: #fff;
+    color: #1c1c1d;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -78,7 +75,7 @@ table { border-spacing: 10px; }
 
 input[type="submit"] {
     background-color: #f0b9a5;
-    color: #fff;
+    color: #1c1c1d;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
