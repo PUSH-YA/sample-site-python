@@ -1,25 +1,48 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 
+<div style = "margin-left: 50px; margin-right: 50px; max-width: 1980px">
 <center><img src= "{{ project.feature_image.url }}" width = "500"></center>
 
 <h1>{{project.title}}</h1>
 <h3> By: <i>{{project.owner}}<i></h3>
+<br>
+
+<br>
 <hr>
+<br>
 {% for tag in tags %}
 <span class = "tags">{{tag}}</span>
 {% endfor %}
+<br>
+<br>
 <hr>
+
+<br>
 <p>{{project.description}}</p>
+
+<br>
 <p>
     {% if project.source_link %}
-        <a href="{{ project.source_link }}">Source link</a>
+        <a href="{{ project.source_link }}" style="text-decoration: none;">
+            Source <img src="{% static 'images/website.png' %}" height="52" 
+            alt="Website Image" style = "vertical-align: middle;">
+        </a>   
     {% endif %}
-    <span class = "link-space"></span>
+
+    <span style = "padding-left: 50px"></span>
+
     {% if project.demo_link %}
-        <a href="{{ project.demo_link }}">Demo link</a>
+    <a href="{{ project.demo_link }}" style = "text-decoration: none;">
+            Demo<img src="{% static 'images/website.png' %}" height="52" 
+            alt="Website Image" style = "vertical-align: middle;">
+    </a>
     {% endif %}
 </p>
+
+<br>
 <p>Created: {{project.created}}</p>
+</div>
 {% endblock content %}
