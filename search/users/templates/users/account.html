@@ -9,8 +9,14 @@
     </left>
     <div style = "margin-left: 20px;">
         <!-- intro  -->
-        <h1>{{profile.name}}</h1>
-        <p>{{profile.short_intro}}</p>
+        <div style = "display: inline-flex;">
+            <h1>{{profile.name}}</h1>
+            <div class = "button-style" style = "margin-left: 24px; font-size: 24px">
+                <a href = "{% url 'edit-account' %}" style = "color: #1c1c1d; text-decoration: None"> Edit</a>
+            </div>
+            
+        </div>
+        <i><p>{{profile.short_intro}}</p></i>
         <!-- location  -->
         <p><div style = "display: inline-flex;">
             {{profile.location}} <img src = '{% static "images/location-pin.png" %}' width = 25>
@@ -45,28 +51,67 @@
 <br>
 <h2>About me</h2>
 <p>{{profile.bio}}</p>
-<br>
-<h2>Skills</h2>
+
+<br><br>
+<div style = "display: inline-flex; justify-content: space-between; width: 100%">
+    <h2>Skills</h2>
+    <div class = "button-style" style = "margin-left: 20px; font-size: 24px">
+        <a href = "{% url 'create-skill'%}" 
+        style = "text-decoration: none; color: #1c1c1d;">Add Skill</a>
+    </div>
+</div>
+
+<br><br>
 <center>
-<table class = "profile-table">
-    {% for skill in topSkills.all %}
-    <tr>
-        <td><b>{{skill.name}}</b></td>
-        <td>{{skill.description}}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <table class = "profile-table">
+        {% for skill in topSkills.all %}
+        <tr>
+            <td><b>{{skill.name}}</b></td>
+            <td>{{skill.description}}</td>
+            <td><a href = "{% url 'update-skill' skill.id %}"
+                style = "text-decoration: none; color: #1c1c1d;">
+                    <div class = "button-style" style = "margin-left: 10px">Edit</div></a>
+                <br>
+                <div class = "button-style" style = "margin-left: 10px">
+                    <a href = "{% url 'delete-skill' skill.id %}?next=/account" 
+                    style = "text-decoration: none; color: #1c1c1d;">Delete</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </center>
 <br>
+
 {% if otherSkills %}
 <h2>Other Skills</h2>
     {% for skill in otherSkills.all %}
+    <div style = "display: inline-flex">
         <span class = "tags">{{ skill.name }}</span>
+        <a href = "{% url 'update-skill' skill.id %}" 
+            style = "text-decoration: none; color: #1c1c1d;">
+            <div class = "button-style" style = "margin-left: 10px">Edit</div></a>
+        <br>
+        <div class = "button-style" style = "margin-left: 10px">
+            <a href = "{% url 'delete-skill' skill.id %}?next=/account" 
+            style = "text-decoration: none; color: #1c1c1d;">Delete</a>
+        </div>
+    </div>
+    <br>
+    <br>
     {% endfor %}
 {% endif %}
-<br>
-<br>
-<h2> Projects </h2>
+
+<br><br>
+<div style = "display: inline-flex; justify-content: space-between; width: 100%">
+    <h2>Skills</h2>
+    <div class = "button-style" style = "margin-left: 20px; font-size: 24px">
+        <a href = "{% url 'create-project'%}" 
+        style = "text-decoration: none; color: #1c1c1d;">Add Project</a>
+    </div>
+</div>
+
+<br><br>
 {% for project in profile.project_set.all%}
 <div class="project-card">
     <div class ="project-card-link"><a href="{% url 'project' project.id %}">
@@ -79,10 +124,10 @@
         </a></h5>
     <p>Votes: {{ project.vote_ratio }}% ({{ project.vote_total }} Vote{{ project.vote_total|pluralize:"s" }})</p>
     <p>Created: {{ project.created }}</p>
-    <!-- <div class="card-buttons">
+    <div class="card-buttons">
         <a href="{% url 'update-project' project.id %}">Edit</a>
-        <a href="{% url 'delete-project' project.id %}">Delete</a>    
-    </div> -->
+        <a href="{% url 'delete-project' project.id %}?next=/account">Delete</a>    
+    </div>
 </div>
 {% endfor %}
 </div>

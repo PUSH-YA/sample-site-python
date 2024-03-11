@@ -10,9 +10,7 @@
     <link rel='stylesheet' type='text/css' 
     media='screen' href='{% static "styles/main.css" %}'>
     <link rel='stylesheet' type='text/css'
-    media='screen' href='{% static "styles/form.css" %}'>
-    <link rel='stylesheet' type='text/css' 
-    media='screen' href='{% static "styles/alert.css" %}'>
+    media='screen' href='{% static "styles/forms.css" %}'>
     <link rel='stylesheet' type='text/css' 
     media='screen' href='{% static "styles/flash_message.css" %}'>
     <!-- <script src='main.js'></script> -->
@@ -44,9 +42,15 @@
             
             {% for field in form %}
                 <div class="input-box">
-                        <!-- <input type="text" name = "{{field.name}}" placeholder="{{field.label}}" required> -->
-                        <label for = "forInput#text" style = "color:#1c1c1d">{{field.label}}</label>
-                        {{field}}
+                        {% if 'Password' in field.label %}
+                        <div class="input-box">
+                                <input type="text" name = "{{field.name}}" placeholder="{{field.label}}" required>
+                        </div>
+                        {% else %}
+                        <div class="input-box">
+                                <input type="text" name = "{{field.name}}" placeholder="{{field.label}}" required>
+                        </div>
+                        {% endif %}
                 </div>
                 {% if field.help_text %}
                 <div class = "text">

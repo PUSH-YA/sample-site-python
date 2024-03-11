@@ -15,13 +15,16 @@ def project(request, pk):
 
 @login_required(login_url="login")
 def createProject(request):
+    profile = request.user.profile
     form = ProjectForm()
 
     # submit query
     if request.method == 'POST':
         form = ProjectForm(request.POST, request.FILES)
         if form.is_valid(): # django can check against our models.Project
-            form.save()
+            project = form.save(commit = False)
+            project.owner = profile
+            project.save()
             return redirect('projects')
     
     context = {'form':form}
@@ -30,7 +33,8 @@ def createProject(request):
 
 @login_required(login_url="login")
 def updateProject(request, pk):
-    project = Project.objects.get(id=pk)
+    profile = request.user.profile
+    project = profile.project_set.get(id=pk)
     #prefill the project form with the project's data
     form = ProjectForm(instance=project)
 
@@ -52,6 +56,8 @@ def deleteProject(request, pk):
     if request.method == 'POST':
         if 'delete' in request.POST:
             project.delete()
-        return redirect('projects')
+        return redirect('account')
+    if 'cancel' in request.POST:
+            return redirect(request.GET.get('next', '/'))
 
-    return render(request, 'projects/delete_template.html',context)
+    return render(request, 'delete_template.html',context)

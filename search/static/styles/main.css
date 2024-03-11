@@ -67,10 +67,21 @@ a:hover {color:#f0b9a5}
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .button-style:hover {
     background-color: #c77d63;
+}
+
+.button-style:visited {
+    background-color: #f0b9a5;
+    color: #1c1c1d;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
 }
 
 input[type="submit"] {

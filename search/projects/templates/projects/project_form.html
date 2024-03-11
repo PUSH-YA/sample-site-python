@@ -1,11 +1,26 @@
 {% extends 'main.html' %}
+{% load static %}
 {% block content %}
-<h1>Project form</h1>
-
+<div style = "display: inline-flex">
+    <a href="{% url 'account' %}" >
+        <img src="{% static 'images/back.png' %}" width="52px" style="margin-left: 20px" class="hoverable-image">
+    </a>    
+    <h1 style = "margin-left: 20px">Project form</h1>
+</div>  
 <!-- action will call the same url method createProject() -->
 <form action = "" method = "POST" enctype="multipart/form-data" class="custom-form">
     {% csrf_token%}
-    {{form.as_p}}
+    {% for field in form %}
+            <div class="input-box">
+                    {% if 'Owner' in field.label %}
+                    
+                    {% else %}
+                    {{field.label}}:
+                    {{field}}
+                    {% endif %}
+            </div>
+        {% endfor %}
+    <!-- {{form.as_p}} -->
         <input type = "submit" class = "button-style">
 </form>
 {% endblock %}

@@ -2,11 +2,10 @@
 {% load static %}
 
 {% block content %}
-<div style = "margin-left: 50px; margin-right: 50px; max-width: 1920px"></div>
 <center><h1 style = "color: #f4f0e8;"> Meet the Talents!</h1></center>
 <br>
 {% for profile in profiles %}
-<div class="profile-card">
+<div class="profile-card" style = "margin-left:20px">
         <div class = "profile-card-link"> <a href ="{% url 'user-profile' profile.id %}">
                 <img src= "{{ profile.profile_image.url }}" class="profile-image">
                 <div class = "profile-info" >
@@ -47,7 +46,6 @@
                         {% endif %}
                     </div>
         </p>
-</div>
 </div>
 {% endfor %}
 

@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div style = "display: inline-flex">
+    <a href="{% url 'account' %}" style = 'padding: 5px' >
+        <img src="{% static 'images/back.png' %}" width="52px" style="margin-left: 20px" class="hoverable-image">
+    </a>    
+    <h1 style = "margin-left: 20px">Profile form</h1>
+</div>
+<div style = "margin-left: 50px; margin-right: 50px; max-width: 1920px"></div>
+<form action = "{% url  'edit-account'%}" method = "POST" enctype="multipart/form-data" class="custom-form">
+    {% csrf_token%}
+        {{form.as_p}}
+        <input type = "submit" class = "button-style">
+</form>
+</div>
+{% endblock %}

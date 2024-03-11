@@ -8,5 +8,11 @@ urlpatterns = [
 
 
     path('', views.profiles, name='profiles'),
-    path('profiles/<str:pk>/', views.userProfile, name='user-profile')
+    path('profiles/<str:pk>/', views.userProfile, name='user-profile'),
+    path('account/', views.userAccount, name='account'),
+    path('edit-account/', views.editAccount, name='edit-account'),
+
+    path('create-skill/', views.create_skill, name= "create-skill"),
+    path('update-skill/<str:pk>', views.update_skill, name= "update-skill"),
+    path('delete-skill/<str:pk>', views.delete_skill, name= "delete-skill"),
 ]

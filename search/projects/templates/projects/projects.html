@@ -16,10 +16,10 @@
             </a></h5>
         <p>Votes: {{ project.vote_ratio }}% ({{ project.vote_total }} Vote{{ project.vote_total|pluralize:"s" }})</p>
         <p>Created: {{ project.created }}</p>
-        <div class="card-buttons">
+        <!-- <div class="card-buttons">
             <a href="{% url 'update-project' project.id %}">Edit</a>
             <a href="{% url 'delete-project' project.id %}">Delete</a>    
-        </div>
+        </div> -->
     </div>
 {% endfor %}
 
